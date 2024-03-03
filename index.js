@@ -38,4 +38,10 @@ io.on("connection", (socket) => {
     console.log("peer:nego:done", ans);
     io.to(to).emit("peer:nego:final", { from: socket.id, ans });
   });
+
+  socket.on("chat:incoming", data => {
+    // console.log(data)
+    console.log(data)
+    io.emit("server:outgoing", data)
+  })
 });
